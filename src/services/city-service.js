@@ -1,49 +1,49 @@
-const { cityRepository } = require('../repository/index');
+const { CityRepository } = require('../repository/index');
 
-class CityServie {
+class CityService {
     constructor() {
-        this.cityRepository = new cityRepository();
+        this.cityRepository = new CityRepository();
     }
 
-    async createCity(city){
-        try{
-            const city = await this.cityRepository.createCity(city);
-            return city;
+    async createCity(city) {
+        try {
+            const City = await this.cityRepository.createCity(city);
+            return City;
         }
-        catch(error){
+        catch (error) {
             console.log("Something went wrong at service layer");
             throw error;
         }
     }
 
-    async deleteCity(cityId){
-        try{
+    async deleteCity(cityId) {
+        try {
             const response = await this.cityRepository.deleteCity(cityId);
             return response;
         }
-        catch(error){
+        catch (error) {
             console.log("Something went wrong at service layer");
             throw error;
         }
     }
 
-    async updateCity(cityId,data){
-        try{
-            const city = await this.cityRepository.updateCity(cityId,data);
-            return city;
+    async updateCity(cityId, data) {
+        try {
+            const City = await this.cityRepository.updateCity(cityId, data);
+            return City;
         }
-        catch(error){
+        catch (error) {
             console.log("Something went wrong at service layer");
             throw error;
-        } 
+        }
     }
 
-    async getCity(cityId){
-        try{
-            const city = await cityRepository.getCity(cityId);
-            return city;
+    async getCity(cityId) {
+        try {
+            const City = await this.cityRepository.getCity(cityId);
+            return City;
         }
-        catch(error){
+        catch (error) {
             console.log("Something went wrong at service layer");
             throw error;
         }

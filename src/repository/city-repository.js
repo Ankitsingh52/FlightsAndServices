@@ -29,11 +29,13 @@ class CityRepository {
 
     async updateCity(cityId,data){
         try{
-            const city = City.update(data,{
-                where:{
-                    id: CityId
-                }
-            });
+            //const city = await City.update(data,{
+            //    where:{
+             //       id: cityId
+             //   }
+            //});
+            const city = await City.findByPk(cityId);
+            city.name = data.name
             return city;
         }
         catch(error){
@@ -44,11 +46,12 @@ class CityRepository {
 
     async deleteCity(cityId){
         try{
-            const city = City.destroy({
+            const city = await City.destroy({
                 where:{
-                    id: CityId
+                    id: cityId
                 }
-            })
+            });
+            return city;
 
         }
         catch(error){

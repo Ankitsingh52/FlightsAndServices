@@ -1,10 +1,10 @@
-const { CityService, cityService } = require('../services/index');
+const { CityService } = require('../services/index');
 
-const CityService = new CityService();
+const cityService = new CityService();
 
 const create = async (req, res) => {
     try {
-        const city = await CityService.createCity(req.body);
+        const city = await cityService.createCity(req.body);
         res.status(201).json({
             data: city,
             success: true,
@@ -26,7 +26,7 @@ const create = async (req, res) => {
 
 const destroy = async (req, res) => {
     try {
-        const response = await CityService.deleteCity(req.params.id);
+        const response = await cityService.deleteCity(req.params.id);
         res.status(200).json({
             data: response,
             success: true,
@@ -77,10 +77,9 @@ const update = async (req, res) => {
         res.status(200).json({
             data: response,
             success: true,
-            message: 'Successfully created a city',
+            message: 'Successfully updated a city',
             err: {}
         })
-
     }
     catch (error) {
         console.log(error);
@@ -91,7 +90,6 @@ const update = async (req, res) => {
             err: error
         });
     }
-
 }
 
 module.exports = {
